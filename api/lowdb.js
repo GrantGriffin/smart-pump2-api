@@ -24,7 +24,7 @@ function authorizeUser(dbCursor, payload) {
     .find({email: payload.email})
     .value()
 
-  if (user.password === payload.password) {
+  if ( user && (user.password === payload.password)) {
     
     return user.guid
   } else {
@@ -48,11 +48,11 @@ async function updateUserFields(dbCursor, updateObj) {
 
   try {
     const guid = updateObj.guid
-    // delete updateObj.guid
+    delete updateObj.guid
     
-    // if(updateObj._id) {
-    //   delete updateObj._id
-    // }
+    if(updateObj._id) {
+      delete updateObj._id
+    }
 
     // grabbing current DB state to deal with nesting issues
     const userToUpdate = await dbCursor.get('users')

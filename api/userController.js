@@ -13,19 +13,15 @@ module.exports = {
 }
 
 async function authController(req, res) {
-  console.log('auth called with: ', {body: req.body})
   try {
-
     const guid = await authorizeUser(dbCursor, req.body)
     res.send({guid})
   } catch (error) {
-    res.status(500).send(error)
+    res.status(401).send(error)
   }
 }
 
 async function readUserController (req, res) {
-  console.log('readUser called with: ', {body: req.body})
-
   if (!req.body.guid) {
     res.status(400).send('readUserController: guid error in request')
     return
@@ -33,13 +29,6 @@ async function readUserController (req, res) {
 
   try {
     const userData = await readUser(dbCursor, req.body.guid)
-
-
-    // IS THIS DELETING LOWDB json by reference somehow???
-    // delete userData._id
-    // delete userData.guid
-    // delete userData.email
-    // delete userData.password
 
     if (!userData.isActive) {
       res.status(401).send('user deactivated')
