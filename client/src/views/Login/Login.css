@@ -1,0 +1,29 @@
+.login__container {
+  text-align: center;
+  margin: 32px;
+}
+
+.login__logo {
+  display: inline-block;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+img {
+  max-width: 100%;
+  width: 125px;
+  height: auto;
+}
+
+.login__submit {
+  display: inline-block;
+  width: 80%;
+  max-width: 250px;
+}
+
+.login__input {
+  width: 100%;
+  max-width: 500px;
+  /* laziness with overriding mat-ui */
+  margin-bottom: 24px !important;
+}
