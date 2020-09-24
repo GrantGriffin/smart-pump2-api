@@ -23,7 +23,10 @@ class Profile extends React.Component {
         .then(res => {
           this.setState({userData: res.data})
         })
-        .catch(err => console.log({err}))
+        .catch(err => {
+          console.log({err})
+          this.props.history.push('/')
+        })
     } else {
       this.props.history.push('/')
     }

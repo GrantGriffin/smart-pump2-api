@@ -17,10 +17,8 @@ async function authController(req, res) {
   try {
 
     const guid = await authorizeUser(dbCursor, req.body)
-    console.log(guid)
     res.send({guid})
   } catch (error) {
-    console.log('error hit')
     res.status(500).send(error)
   }
 }

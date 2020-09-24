@@ -24,9 +24,6 @@ function authorizeUser(dbCursor, payload) {
     .find({email: payload.email})
     .value()
 
-    console.log({WTFAUTH: dbCursor.get('users').value})
-
-  console.log('lowdb', {user})
   if (user.password === payload.password) {
     
     return user.guid
@@ -57,15 +54,11 @@ async function updateUserFields(dbCursor, updateObj) {
     //   delete updateObj._id
     // }
 
-    console.log({updateObj})
-    console.log(guid)
-
     // grabbing current DB state to deal with nesting issues
     const userToUpdate = await dbCursor.get('users')
       .find({guid})
       .value()
 
-      console.log({userToUpdate, updateObj, WTF: dbCursor.get('users').value()})
     return await dbCursor.get('users')
       .find({guid})
       .assign(updateObj)
