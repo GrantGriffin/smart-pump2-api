@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileEdit from './ProfileEdit'
-import { render, fireEvent, wait, getByTestId } from '@testing-library/react'
+import { render, fireEvent, wait } from '@testing-library/react'
 
 const userDataMock = {
   name: {
