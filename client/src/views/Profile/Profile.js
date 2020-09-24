@@ -18,7 +18,7 @@ class Profile extends React.Component {
     // local storage mocking workaround
     const { guidMock } = this.props
     const userGuid = localStorage.getItem('userGuid') || guidMock
-    if(userGuid.length > 30 ) {
+    if( userGuid && userGuid.length > 30 ) {
       readUserRequest()
         .then(res => {
           this.setState({userData: res.data})
